@@ -33,4 +33,101 @@
 </body>
 </html>
 
+CSS CODE:
+* {
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    display: flex;
+    justify-content: center;
+    background-color: black;
+    color: white;
+    padding: 10px 0;
+}
+
+.choices {
+    display: flex;
+    justify-content: center;
+}
+
+img {
+    height: 250px;
+    width: 250px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin: 20px;
+    cursor: pointer;
+}
+
+img:active {
+    height: 240px;
+    width: 240px;
+    border: 5px solid black;
+}
+
+.scoreCard {
+    display: flex;
+    justify-content: center;
+}
+
+#user, #comp {
+    margin: 20px;
+    font-size: 25px;
+}
+
+#user p, #comp p {
+    text-align: center;
+}
+
+.message {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    font-size: 20px;
+}
+
+.message p {
+    height: 50px;
+    width: 500px;
+    text-align: center;
+    line-height: 50px;
+    background-color: black;
+    color: white;
+    border-radius: 15px;
+}
+
+JS CODE:
+
+let userScore = 0;
+let compScore = 0;
+
+function play(userChoice) {
+    const choices = ['rock', 'paper', 'scissors'];
+    const computerChoice = choices[Math.floor(Math.random() * choices.length)];
+    let result;
+
+    if (userChoice === computerChoice) {
+        result = "It's a tie!";
+    } else if (
+        (userChoice === 'rock' && computerChoice === 'scissors') ||
+        (userChoice === 'paper' && computerChoice === 'rock') ||
+        (userChoice === 'scissors' && computerChoice === 'paper')
+    ) {
+        result = "You win!";
+        userScore++;
+    } else {
+        result = "Computer wins!";
+        compScore++;
+    }
+
+    document.getElementById('userScore').innerText = userScore;
+    document.getElementById('compScore').innerText = compScore;
+    document.getElementById('gameMessage').innerText = 
+        `You chose: ${userChoice}. Computer chose: ${computerChoice}. ${result}`;
+}
+
+
+
 
